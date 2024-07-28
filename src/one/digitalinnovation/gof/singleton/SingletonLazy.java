@@ -1,22 +1,21 @@
 package one.digitalinnovation.gof.singleton;
 
 /**
- * Singleton "preguiçoso".
+ * Singleton "Lazy" otimizado com Lazy Holder.
  * 
- * @author falvojr
+ * 
  */
 public class SingletonLazy {
 
-	private static SingletonLazy instancia;
-	
-	private SingletonLazy() {
-		super();
-	}
-	
-	public static SingletonLazy getInstancia() {
-		if (instancia == null) {
-			instancia = new SingletonLazy();
-		}
-		return instancia;
-	}
+    private static class InstanceHolder {
+        public static final SingletonLazy INSTANCE = new SingletonLazy();
+    }
+
+    private SingletonLazy() {
+        super();
+    }
+
+    public static SingletonLazy getInstancia() {
+        return InstanceHolder.INSTANCE;
+    }
 }
